@@ -1,0 +1,15 @@
+# https://dev.to/jiprochazka/starting-up-a-new-vue-3-project-with-vite-and-docker-3355
+
+version: "2"
+
+services:
+  my_frontend: # name of service (substitue container_id
+    container_name: my_frontend
+    image: node:lts # is better put a constant-node Example - node:16
+    working_dir: /var/www/html/app/ # where is put te cmd inside of docker context
+    entrypoint: /bin/bash
+    expose:
+      - 8000
+    volumes:
+      - ./frontend/:/var/www/html/app # connect folder frontend to folder in docker context 'var/www/html...'
+    tty: true
